@@ -4,6 +4,8 @@ logs
 # dist
 dist
 dist/*
+src/libs
+src/libs/*
 # Runtime data
 pids
 *.pid

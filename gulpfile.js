@@ -39,6 +39,12 @@ gulp.task('template', function( ){
         .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('dependency', function( ){
+    return gulp
+        .src('src/libs/*')
+        .pipe(gulp.dest('./dist/libs'));
+});
+
 /**
  * Running livereload server
  */
@@ -51,14 +57,14 @@ gulp.task('server', function() {
 });
 
 gulp.task('watch',function(){
-    gulp.watch('src/css/main.css',['style'])
-    gulp.watch('src/js/main.js',['script'])
-    gulp.watch('src/index.html',['template'])
+    gulp.watch('src/css/main.css',['style']);
+    gulp.watch('src/js/main.js',['script']);
+    gulp.watch('src/index.html',['template']);
 });
 
 gulp.task('build',['template','style','script']);
 
-gulp.task('cleanbuild', [['clear',['template','style','script']]],function(){
+gulp.task('cleanbuild', [['clear',['template','dependency','style','script']]],function(){
     console.log("Run clean build suscess")
 });
 
