@@ -21,7 +21,6 @@ gulp.task('script', function( ){
         .pipe(plumber())
         .pipe(uglify())
         .pipe(jshint())
-        .pipe(rename({suffix:'.min'}))
         .pipe(gulp.dest('dist/js'));
 });
 
@@ -29,7 +28,6 @@ gulp.task('style', function( ){
     return gulp
         .src('src/css/main.css')
         .pipe(minifyCSS())
-        .pipe(rename({suffix:'.min'}))
         .pipe(gulp.dest('dist/css'));
 });
 
@@ -41,7 +39,7 @@ gulp.task('template', function( ){
 
 gulp.task('dependency', function( ){
     return gulp
-        .src('src/libs/*')
+        .src('src/libs/**/*')
         .pipe(gulp.dest('./dist/libs'));
 });
 
@@ -51,7 +49,7 @@ gulp.task('dependency', function( ){
 gulp.task('server', function() {
   browserSync({
     server: {
-     baseDir: './dist' 
+     baseDir: './src' 
     }
   });
 });
